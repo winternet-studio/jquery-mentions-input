@@ -1,0 +1,23 @@
+{
+    "name": "winternet-studio/jquery-mentions-input",
+    "description": "UI component allowing to mention/tag someone/something in an HTML input field",
+    "authors": [
+        {
+            "name": "Kenneth Auchenberg",
+            "email": "kenneth@auchenberg.dk",
+            "role": "Original Developer"
+        },
+        {
+            "name": "djhvscf",
+            "email": "djhv92@hotmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Allan Jensen",
+            "email": "jquery-mentions-input@allanid.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {}
+}
