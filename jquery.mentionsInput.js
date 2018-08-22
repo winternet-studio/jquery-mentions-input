@@ -591,6 +591,7 @@
 
         //Resets the text area
         function resetInput(currentVal) {
+            if (currentVal === false) currentVal = elmInputBox.val();
             mentionsCollection = [];
             var mentionText = utils.htmlEncode(currentVal);
             var regex = new RegExp("(" + settings.triggerChars.join("|") + ")\\[(.*?)\\]\\((.*?):(.*?)\\)", "gi");
