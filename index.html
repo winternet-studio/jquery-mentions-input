@@ -149,6 +149,13 @@ $('textarea.mention').mentionsInput({
     </td>
   </tr>
   <tr>
+    <td><b>reinit</b></td>
+    <td></td>
+    <td class="definition">
+      Reinit with the text area value if it was changed programmatically
+    </td>
+  </tr>
+  <tr>
     <td><b>reset</b></td>
     <td></td>
     <td class="definition">
@@ -167,6 +174,23 @@ $('textarea.mention').mentionsInput({
     <td></td>
     <td class="definition">
       An async method which accepts a callback function and returns a collection of mentions as hash objects as a first parameter.
+    </td>
+  </tr>
+  <tr>
+    <td><b>hideAutoComplete</b></td>
+    <td></td>
+    <td class="definition">
+      Hides Autocomplete box
+    </td>
+  </tr>
+  <tr>
+    <td><b>destroy(options)</b></td>
+    <td></td>
+    <td class="definition">
+      Destroys the mentionsInput component. Options available:
+      <ul>
+        <li><kbd><b>keepInput</b></kbd> &mdash; set <kbd><b>true</b></kbd> to keep the textarea and the current plain value of the input instead of just removing everything</li>
+      </ul>
     </td>
   </tr>
 </table>

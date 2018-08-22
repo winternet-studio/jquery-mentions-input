@@ -640,6 +640,47 @@
 	            hideAutoComplete();
             },
 
+            // Destroy the mentionsInput, with option to revert back to the original textarea (based on: https://github.com/corsacca/jquery-mentions-input/commit/43b5319834710826f14d92acc4b3babf1e53c3dd)
+            destroy: function (options) {
+                if (!options) options = {};
+                var destroyEle = function (ele) {
+                    if(ele) {
+                        ele.remove();
+                        delete ele;
+                    }
+                };
+                if (options.keepInput) {
+                    resetInput(false);  //leave the currently value as is
+                } else {
+                    resetInput();
+                }
+                autocompleteItemCollection = {};
+                inputBuffer = [];
+                mentionsCollection = [];
+                if(elmInputBox) {
+                    elmInputBox.unbind('propertychange', onInputBoxInput);
+                    elmInputBox.unbind('input', onInputBoxInput);
+                    elmInputBox.unbind('keydown', onInputBoxKeyDown); //Bind the keydown event to the text area
+                    elmInputBox.unbind('keypress', onInputBoxKeyPress); //Bind the keypress event to the text area
+                    elmInputBox.unbind('click', onInputBoxClick); //Bind the click event to the text area
+                    elmInputBox.unbind('blur', onInputBoxBlur);
+                    if (!options.keepInput) {
+                        destroyEle(elmInputBox);
+                    } else {
+                        $(elmInputBox)
+                            .unwrap('.mentions-input-box')
+                            .removeAttr('data-mentions-input')
+                            .css('overflow', '');  //this has been set to overflow:hidden
+                    }
+                }
+                destroyEle(elmAutocompleteList);
+                destroyEle(elmActiveAutoCompleteItem);
+                destroyEle(elmMentionsOverlay);
+                if (!options.keepInput) {
+                    destroyEle($(domInput));
+                }
+            },
+
             //Reinit with the text area value if it was changed programmatically
             reinit : function () {
                 resetInput(false);
