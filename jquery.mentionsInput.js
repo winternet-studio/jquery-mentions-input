@@ -597,7 +597,7 @@
             var regex = new RegExp("(" + settings.triggerChars.join("|") + ")\\[(.*?)\\]\\((.*?):(.*?)\\)", "gi");
             var match, newMentionText = mentionText;
             while ((match = regex.exec(mentionText)) != null) {
-                newMentionText = newMentionText.replace(match[0], match[1] + match[2]);
+                newMentionText = newMentionText.replace(match[0], match[2]);
                 mentionsCollection.push({ 'id': match[4], 'type': match[3], 'value': match[2], 'trigger': match[1] });
             }
             elmInputBox.val(newMentionText);
