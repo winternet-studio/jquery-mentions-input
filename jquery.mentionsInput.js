@@ -158,7 +158,7 @@
 
             _.each(mentionsCollection, function (mention) {
                 var textSyntax = settings.templates.mentionItemSyntax(mention);
-                syntaxMessage = syntaxMessage.replace(new RegExp(utils.regexpEncode(mention.value), 'g'), textSyntax);
+                syntaxMessage = syntaxMessage.replace(new RegExp(utils.regexpEncode(mention.value) +'(?!\\]\\()', 'g'), textSyntax);  //added "look ahead" for "](" to ensure we don't double-replace a given name and end up with "@[@[John Doe](Contact:5)](Contact:5)" (if two different records have the same name it's still a problem though...)
             });
 
             var mentionText = utils.htmlEncode(syntaxMessage); //Encode the syntaxMessage
