@@ -593,7 +593,9 @@
         function resetInput(currentVal) {
             if (currentVal === false) currentVal = elmInputBox.val();
             mentionsCollection = [];
-            var mentionText = utils.htmlEncode(currentVal);
+            // NOTE: can't see why they chose to HTML encode the value here... it caused default values containing eg. a single-quote to show like in the textarea field: "that&#x27;s not correct". So I skip that.
+            // var mentionText = utils.htmlEncode(currentVal);
+            var mentionText = currentVal;
             var regex = new RegExp("(" + settings.triggerChars.join("|") + ")\\[(.*?)\\]\\((.*?):(.*?)\\)", "gi");
             var match, newMentionText = mentionText;
             while ((match = regex.exec(mentionText)) != null) {
